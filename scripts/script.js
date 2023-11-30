@@ -65,7 +65,7 @@ const getWeatherDetails = (cityName, lat, long) =>{
 const getCityCoordinates = () => {
     const cityName = cityInput.value.trim();
     if(!cityName) return(alert("enter a valid city name pls"));
-    const GEOCODING_API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`
+    const GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`
 
     fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
         if(!data.length) return (alert(`no coordonate found for ${cityName}`))
@@ -80,7 +80,7 @@ const getUserCoordinates = () =>{
     navigator.geolocation.getCurrentPosition(
         position => {
            const {latitude, longitude } = position.coords ; //Get coordinates of user loction
-           const REVERSE_GEOCODING_URL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}` ;
+           const REVERSE_GEOCODING_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}` ;
            
            //Get City name from coordinates using reverse geocoding API
            fetch(REVERSE_GEOCODING_URL).then(res => res.json()).then(data => {
